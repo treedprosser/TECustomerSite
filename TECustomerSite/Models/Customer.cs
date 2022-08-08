@@ -18,35 +18,56 @@ namespace TECustomerSite.Models
 
         [Key]
         public int CustomerId { get; set; }
+
+        [Required]
         [StringLength(25)]
         public string CustFirstName { get; set; } = null!;
+
+        [Required]
         [StringLength(25)]
-        public string CustLastName { get; set; } = null!;
+        public string CustLastName { get; set; }
+
+        [Required]
         [StringLength(75)]
-        public string CustAddress { get; set; } = null!;
+        public string CustAddress { get; set; }
+
+        [Required]
         [StringLength(50)]
-        public string CustCity { get; set; } = null!;
+        public string CustCity { get; set; }
+
+        [Required]
         [StringLength(2)]
-        public string CustProv { get; set; } = null!;
+        public string CustProv { get; set; }
+
+        [Required]
         [StringLength(7)]
-        public string CustPostal { get; set; } = null!;
+        //[RegularExpression("/^[A-Z]\\d[A-Z] ?\\d[A-Z]\\d$/", ErrorMessage = "Please enter a valid Postal Code")]
+        public string CustPostal { get; set; }
+
+        [Required]
         [StringLength(25)]
         public string? CustCountry { get; set; }
+
+        [Required]
         [StringLength(20)]
+        //[RegularExpression("/(?:\\d{1}\\s)?\\(?(\\d{3})\\)?-?\\s?(\\d{3})-?\\s?(\\d{4})/g", ErrorMessage = "Please Enter a valid phone number")]
         public string? CustHomePhone { get; set; }
+        
         [StringLength(20)]
-        public string CustBusPhone { get; set; } = null!;
+        public string? CustBusPhone { get; set; }
+
         [StringLength(50)]
-        public string CustEmail { get; set; } = null!;
+        public string? CustEmail { get; set; }
+
         public int? AgentId { get; set; }
+
         [Column("username")]
         [StringLength(50)]
-        [Unicode(false)]
-        public string? Username { get; set; }
+        public string Username { get; set; }
+
         [Column("password")]
         [StringLength(50)]
-        [Unicode(false)]
-        public string? Password { get; set; }
+        public string Password { get; set; }
 
         [ForeignKey("AgentId")]
         [InverseProperty("Customers")]

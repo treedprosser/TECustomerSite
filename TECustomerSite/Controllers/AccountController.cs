@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using TECustomerSite.Models;
 
 namespace TECustomerSite.Controllers
@@ -46,5 +47,27 @@ namespace TECustomerSite.Controllers
 			await HttpContext.SignOutAsync("Cookies");
 			return RedirectToAction("Index", "Home");
 		}
-	}
+
+        public IActionResult Register()
+        {
+            return View(new Customer());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Register(Customer customer)
+        {
+            try
+            {
+                CustomerManager.Register(customer);
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                TempData["IsError"] = true;
+                TempData["Message"] = "Error registering, please try again later";
+                return View();
+            }
+        }
+    }
 }
