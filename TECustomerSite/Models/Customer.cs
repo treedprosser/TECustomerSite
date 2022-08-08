@@ -63,12 +63,10 @@ namespace TECustomerSite.Models
 
         [Column("username")]
         [StringLength(50)]
-        [Unicode(false)]
         public string Username { get; set; }
 
         [Column("password")]
         [StringLength(50)]
-        [Unicode(false)]
         public string Password { get; set; }
 
         [ForeignKey("AgentId")]
