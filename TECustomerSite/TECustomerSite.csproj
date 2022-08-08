@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\Images\asia.jpg" />
+    <None Include="wwwroot\css\Images\carribean.jpg" />
+    <None Include="wwwroot\css\Images\italy.jpg" />
+    <None Include="wwwroot\css\Images\polynesia.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.7" />
