@@ -69,5 +69,21 @@ namespace TECustomerSite.Controllers
                 return View();
             }
         }
+
+		public ActionResult Edit(int id, Customer newData)
+        {
+            try
+            {
+                CustomerManager.UpdateCustomer(id, newData);
+                TempData["Message"] = $"Successfully updated {newData.CustFirstName} information";
+            }
+            catch 
+            {
+				TempData["IsError"] = true;
+				TempData["Message"] = "Error when attempting to edit Customer";
+				return View();
+            }
+			return RedirectToAction(nameof(Index));
+        }
     }
 }
