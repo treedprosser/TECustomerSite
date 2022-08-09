@@ -19,56 +19,62 @@ namespace TECustomerSite.Models
         [Key]
         public int CustomerId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "This field is required")]
         [StringLength(25)]
         public string CustFirstName { get; set; } = null!;
 
-        [Required]
+        [Required(ErrorMessage = "This field is required")]
         [StringLength(25)]
         public string CustLastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "This field is required")]
         [StringLength(75)]
         public string CustAddress { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "This field is required")]
         [StringLength(50)]
         public string CustCity { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "This field is required")]
         [StringLength(2)]
         public string CustProv { get; set; }
 
-        [Required]
-        [StringLength(7)]
-        //[RegularExpression("/^[A-Z]\\d[A-Z] ?\\d[A-Z]\\d$/", ErrorMessage = "Please enter a valid Postal Code")]
+        [Required(ErrorMessage = "This field is required")]
+        [RegularExpression(@"^([a-zA-Z]\\d[a-zA-Z]\\s?\\d[a-zA-Z]\\d)$", ErrorMessage = "Please enter a valid Postal Code")]
+        [StringLength(7, MinimumLength = 6, ErrorMessage = "Please enter a valid Postal Code")]
         public string CustPostal { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "This field is required")]
         [StringLength(25)]
         public string? CustCountry { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "This field is required")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "Invalid Phone Number")]
+        [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Phone Number.")]
         [StringLength(20)]
-        //[RegularExpression("/(?:\\d{1}\\s)?\\(?(\\d{3})\\)?-?\\s?(\\d{3})-?\\s?(\\d{4})/g", ErrorMessage = "Please Enter a valid phone number")]
         public string? CustHomePhone { get; set; }
-        
+
         [StringLength(20)]
-        public string? CustBusPhone { get; set; }
+        public string? CustBusPhone { get; set; } = "_";
 
         [StringLength(50)]
-        public string? CustEmail { get; set; }
+        public string? CustEmail { get; set; } = "_";
 
         public int? AgentId { get; set; }
 
+        [Required(ErrorMessage = "This field is required")]
         [Column("username")]
         [StringLength(50)]
         public string Username { get; set; }
 
-        // Double check password (enter twice?)
+        [Required(ErrorMessage = "This field is required")]
         [Column("password")]
         [StringLength(50)]
         public string Password { get; set; }
+
+        [NotMapped]
+        [Compare("Password", ErrorMessage ="Passwords must match")]
+        public string ComparePassword { get; set; }
 
         [ForeignKey("AgentId")]
         [InverseProperty("Customers")]
