@@ -65,6 +65,7 @@ namespace TECustomerSite.Models
         [StringLength(50)]
         public string Username { get; set; }
 
+        // Double check password (enter twice?)
         [Column("password")]
         [StringLength(50)]
         public string Password { get; set; }
