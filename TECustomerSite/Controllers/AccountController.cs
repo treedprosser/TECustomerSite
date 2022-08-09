@@ -16,7 +16,7 @@ namespace TECustomerSite.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> LoginAsync( Customer customer)
+		public async Task<IActionResult> LoginAsync( Customer customer )
 		{
 			TravelExpertsContext db = new TravelExpertsContext();
 			var usr = db.Customers
