@@ -33,7 +33,21 @@
             </div>
             <div class="form-group">
                 <label asp-for="CustProv" class="control-label">Province</label>
-                <input asp-for="CustProv" class="form-control" />
+                <select asp-for="CustProv" class="form-control">
+                    <option value="AB">Alberta</option>
+                    <option value="BC">British Columbia</option>
+                    <option value="MB">Manitoba</option>
+                    <option value="NB">New Brunswick</option>
+                    <option value="NL">Newfoundland and Labrador</option>
+                    <option value="NT">Northwest Territories</option>
+                    <option value="NS">Nova Scotia</option>
+                    <option value="NU">Nunavut</option>
+                    <option value="ON">Ontario</option>
+                    <option value="PE">Prince Edward Island</option>
+                    <option value="QC">Quebec</option>
+                    <option value="SK">Saskatchewan</option>
+                    <option value="YK">Yukon</option>
+                </select>
                 <span asp-validation-for="CustProv" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -74,6 +88,11 @@
                 <label asp-for="Password" class="control-label">Password</label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComparePassword" class="control-label">Re-Enter Password</label>
+                <input asp-for="ComparePassword" class="form-control" />
+                <span asp-validation-for="ComparePassword" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Register" class="btn btn-primary" />

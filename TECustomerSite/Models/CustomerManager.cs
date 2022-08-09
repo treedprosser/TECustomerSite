@@ -1,7 +1,10 @@
-﻿namespace TECustomerSite.Models
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace TECustomerSite.Models
 {
     public class CustomerManager
     {
+        // Register the customer after info has been filled in and verified
         public static void Register(Customer customer)
         {
             TravelExpertsContext db = new TravelExpertsContext();
