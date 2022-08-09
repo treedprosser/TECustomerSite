@@ -71,6 +71,7 @@ namespace TECustomerSite.Controllers
             }
         }
 
+        [Authorize]
 		public IActionResult Edit(int id)
         {
 			List<Customer> customers = new List<Customer>();
