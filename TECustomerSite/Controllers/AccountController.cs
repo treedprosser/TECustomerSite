@@ -71,8 +71,16 @@ namespace TECustomerSite.Controllers
             }
         }
 
+		public IActionResult Edit(int id)
+        {
+			List<Customer> customers = new List<Customer>();
+			Customer customer = CustomerManager.FindCustomer(id);
+			return View(customer);
+        }
+
+        [HttpPost]
         [Authorize]
-		public ActionResult Edit(int id, Customer newData)
+		public IActionResult Edit(int id, Customer newData)
         {
             try
             {

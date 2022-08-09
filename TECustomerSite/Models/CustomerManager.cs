@@ -9,6 +9,13 @@
             db.SaveChanges();
         }
 
+        public static List<Customer> GetCustomers()
+        {
+            TravelExpertsContext db = new TravelExpertsContext();
+            List<Customer> customers = db.Customers.ToList();
+            return customers;
+        }
+
         /// <summary>
         /// find customer with id
         /// </summary>
