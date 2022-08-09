@@ -3,6 +3,7 @@ using System.Security.Claims;
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TECustomerSite.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TECustomerSite.Controllers
 {
@@ -70,12 +71,13 @@ namespace TECustomerSite.Controllers
             }
         }
 
+        [Authorize]
 		public ActionResult Edit(int id, Customer newData)
         {
             try
             {
                 CustomerManager.UpdateCustomer(id, newData);
-                TempData["Message"] = $"Successfully updated {newData.CustFirstName} information";
+                TempData["Message"] = $"Successfully updated {newData.CustFirstName}'s information";
             }
             catch 
             {
