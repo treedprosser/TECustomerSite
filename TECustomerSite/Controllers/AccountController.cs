@@ -4,6 +4,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using TECustomerSite.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TECustomerSite.Controllers
 {
@@ -15,6 +16,7 @@ namespace TECustomerSite.Controllers
 				TempData["returnUrl"] = returnUrl;
 			return View();
 		}
+
 
 		[HttpPost]
 		public async Task<IActionResult> LoginAsync( Customer customer )
@@ -74,13 +76,13 @@ namespace TECustomerSite.Controllers
         [Authorize]
 		public IActionResult Edit(int id)
         {
-			List<Customer> customers = new List<Customer>();
-			Customer customer = CustomerManager.FindCustomer(id);
-			return View(customer);
+            Customer customer = CustomerManager.FindCustomer(id);
+            return View(customer);
         }
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
 		public IActionResult Edit(int id, Customer newData)
         {
             try
