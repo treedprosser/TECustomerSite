@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<TECustomerSite.Models.BookingDetail>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Current Bookings";
 }
 
-<h1>Index</h1>
+<h1>Current Bookings</h1>
 
 <table class="table">
     <thead>
@@ -77,3 +77,9 @@
 }
     </tbody>
 </table>
+<div>
+    <strong>Subtotal: </strong> @Model.Sum(b => b.BasePrice)
+</div>
+<div>
+    <strong>Total Commission: </strong> @Model.Sum(b => b.AgencyCommission)
+</div>
