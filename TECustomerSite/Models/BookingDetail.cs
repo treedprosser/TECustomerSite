@@ -41,6 +41,9 @@ namespace TECustomerSite.Models
         public string? FeeId { get; set; }
         public int? ProductSupplierId { get; set; }
 
+        public decimal? Total { get; set; }
+        [Column(TypeName ="money")]
+
         [ForeignKey("BookingId")]
         [InverseProperty("BookingDetails")]
         public virtual Booking? Booking { get; set; }

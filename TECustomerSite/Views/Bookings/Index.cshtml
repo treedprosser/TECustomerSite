@@ -30,6 +30,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.AgencyCommission)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
     
             <th></th>
         </tr>
@@ -59,6 +62,9 @@
                 @Html.DisplayFor(modelItem => item.AgencyCommission)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Booking.BookingId)
             </td>
             <td>
@@ -78,8 +84,6 @@
     </tbody>
 </table>
 <div>
-    <strong>Subtotal: </strong> @Model.Sum(b => b.BasePrice)
+    <strong>Total Owing: </strong> @Model.Sum(b => b.Total)
 </div>
-<div>
-    <strong>Total Commission: </strong> @Model.Sum(b => b.AgencyCommission)
-</div>
+
