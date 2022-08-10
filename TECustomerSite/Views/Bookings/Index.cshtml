@@ -84,8 +84,6 @@
     </tbody>
 </table>
 <div>
-    <strong>Subtotal: </strong> @Model.Sum(b => b.BasePrice)
+    <strong>Total Owing: </strong> @Model.Sum(b => b.Total)
 </div>
-<div>
-    <strong>Total Commission: </strong> @Model.Sum(b => b.AgencyCommission)
-</div>
+
