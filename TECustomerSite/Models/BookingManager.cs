@@ -7,18 +7,18 @@ namespace TECustomerSite.Models
     {
         public static List<BookingDetail> GetBookingDetails(int custID)
         {
-            List<Booking> custBookings = null;
-            List<BookingDetail> custDetails = null;
-            TravelExpertsContext db = new TravelExpertsContext();
+			
+			//List<Booking> custBookings = null;
+			//List<BookingDetail> custDetails = null;
+			TravelExpertsContext db = new TravelExpertsContext();
+			List<int> bookingIDS;
+			List<BookingDetail> bookingDetails;
 
-            custBookings = db.Bookings.Where(b => b.CustomerId == custID).ToList();
+			bookingIDS = db.Bookings.Where(b => b.CustomerId == custID).Select(b => b.BookingId).ToList();
+            
+			bookingDetails = db.BookingDetails.Where(b => b.BookingId != null && bookingIDS.Contains((int)b.BookingId)).ToList();
 
-            foreach (Booking booking in custBookings)
-            {
-                custDetails = db.BookingDetails.Where(b => b.BookingId == booking.BookingId).ToList();
-            }
-
-            return custDetails;
+            return bookingDetails;
         }
     }
 }
