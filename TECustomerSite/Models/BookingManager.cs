@@ -1,22 +1,24 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace TECustomerSite.Models
 {
     public class BookingManager
     {
-      // get bookings
-        public static List<Booking> GetAll()
+        public static List<BookingDetail> GetBookingDetails(int custID)
         {
-            TravelExpertsContext db = new TravelExpertsContext();
-            List<Booking> bookings = db.Bookings.Include(r => r.Customer).Include(r => r.BookingDetails).ToList();
-            return bookings;
-        }
-        public static List<Booking> GetBooking()
-        {
-            TravelExpertsContext db = new TravelExpertsContext();
-            List<Booking> bookings = db.Bookings.ToList();
-            return bookings;
+			
+			//List<Booking> custBookings = null;
+			//List<BookingDetail> custDetails = null;
+			TravelExpertsContext db = new TravelExpertsContext();
+			List<int> bookingIDS;
+			List<BookingDetail> bookingDetails;
 
+			bookingIDS = db.Bookings.Where(b => b.CustomerId == custID).Select(b => b.BookingId).ToList();
+            
+			bookingDetails = db.BookingDetails.Where(b => b.BookingId != null && bookingIDS.Contains((int)b.BookingId)).ToList();
+
+            return bookingDetails;
         }
     }
 }

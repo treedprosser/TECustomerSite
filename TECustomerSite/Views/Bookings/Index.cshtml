@@ -1,26 +1,36 @@
 ﻿@model IEnumerable<TECustomerSite.Models.BookingDetail>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Current Bookings";
 }
 
-<h1>Booking Details</h1>
+<h1>Current Bookings</h1>
 
-
-
-<table class="table table-bordered table-striped">
+<table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Destination)
+                @Html.DisplayNameFor(model => model.ItineraryNo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TripStart)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.TripEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.BasePrice)
             </th>
-          
+            <th>
+                @Html.DisplayNameFor(model => model.AgencyCommission)
+            </th>
+    
             <th></th>
         </tr>
     </thead>
@@ -28,23 +38,48 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.BookingDetailId)
+                @Html.DisplayFor(modelItem => item.ItineraryNo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BookingDetailId)
+                @Html.DisplayFor(modelItem => item.TripStart)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BookingDetailId)
+                @Html.DisplayFor(modelItem => item.TripEnd)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BookingDetailId)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
-@*            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Destination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasePrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgencyCommission)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Booking.BookingId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class.ClassId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fee.FeeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductSupplier.ProductSupplierId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Region.RegionId)
+            </td>
         </tr>
 }
     </tbody>
 </table>
+<div>
+    <strong>Subtotal: </strong> @Model.Sum(b => b.BasePrice)
+</div>
+<div>
+    <strong>Total Commission: </strong> @Model.Sum(b => b.AgencyCommission)
+</div>

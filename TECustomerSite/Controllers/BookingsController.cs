@@ -9,11 +9,9 @@ namespace TECustomerSite.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            List<BookingDetail> bookings = null;
+            List<BookingDetail> bookings;
             int? customerID = HttpContext.Session.GetInt32("CurrentCustomer");
-            // Could create a BookingsManager class and add a method to it that will grab all the bookings for a given customer ID
-            // Then call the method on the list created above, something like what's written below
-            //bookings = BookingManager.GetBookingsByCustomer((int)customerID);
+            bookings = BookingManager.GetBookingDetails((int)customerID);
             return View(bookings);
         }
     }
