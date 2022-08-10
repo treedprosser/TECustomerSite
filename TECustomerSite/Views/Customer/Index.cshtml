@@ -102,6 +102,8 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+
+    @*@Html.ActionLink("Edit", "Edit", new { @class="btn btn-primary btn-lg"/* id = Model.PrimaryKey */ }) |*@
     <a asp-area="" asp-controller="Home" asp-action="Index" button type="button" class="btn btn-outline-primary btn-lg">Home</a>
+    <a asp-area="" asp-controller="Customer" asp-action="Edit" button type="button" class="btn btn-outline-primary btn-lg">Edit</a>
 </div>
