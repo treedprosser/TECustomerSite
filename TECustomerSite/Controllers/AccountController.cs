@@ -29,6 +29,9 @@ namespace TECustomerSite.Controllers
 			if (usr == null)
 				return View();
 
+            HttpContext.Session.SetInt32("CurrentCustomer", (int)usr.CustomerId);
+
+
 			var claims = new List<Claim>()
 			{
 				new Claim(ClaimTypes.Name, usr.Username),
@@ -47,6 +50,9 @@ namespace TECustomerSite.Controllers
 
 		public async Task<IActionResult> LogoutAsync()
 		{
+            //int? custID = HttpContext.Session.GetInt32("CurrentCustomer");
+            //if (custID != null)
+            //    HttpContext.Session.Remove("CurrentCustomer");
 			await HttpContext.SignOutAsync("Cookies");
 			return RedirectToAction("Index", "Home");
 		}
@@ -85,10 +91,15 @@ namespace TECustomerSite.Controllers
         [ValidateAntiForgeryToken]
 		public IActionResult Edit(int id, Customer newData)
         {
+            if (HttpContext.Session.GetInt32("CurrentCustomer") > 0)
+            {
+                id = HttpContext.Session.GetInt32("CurrentCustomer")??0;
+            }
             try
             {
                 CustomerManager.UpdateCustomer(id, newData);
                 TempData["Message"] = $"Successfully updated {newData.CustFirstName}'s information";
+                return RedirectToAction(nameof(Index));
             }
             catch 
             {
@@ -96,7 +107,6 @@ namespace TECustomerSite.Controllers
 				TempData["Message"] = "Error when attempting to edit Customer";
 				return View();
             }
-			return RedirectToAction(nameof(Index));
         }
     }
 }

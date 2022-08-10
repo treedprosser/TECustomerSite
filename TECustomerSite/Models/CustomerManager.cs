@@ -36,10 +36,11 @@ namespace TECustomerSite.Models
         /// </summary>
         /// <param name="id">id of customer to update</param>
         /// <param name="newCustomer">new data values</param>
-        public static void UpdateCustomer(int id, Customer newCustomer)
+        public static async void UpdateCustomer(int id, Customer newCustomer)
         {
             TravelExpertsContext db = new TravelExpertsContext();
-            Customer customer = db.Customers.Find(id);  // customer to update 
+            Customer customer = db.Customers.Find(id);
+             //Customer customer = new Customer();  // customer to update 
             // copy over new customer data 
             customer.CustFirstName      = newCustomer.CustFirstName;
             customer.CustLastName       = newCustomer.CustLastName;

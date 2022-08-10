@@ -40,7 +40,7 @@ namespace TECustomerSite.Models
         public string CustProv { get; set; }
 
         [Required(ErrorMessage = "This field is required")]
-        [RegularExpression(@"^([a-zA-Z]\\d[a-zA-Z]\\s?\\d[a-zA-Z]\\d)$", ErrorMessage = "Please enter a valid Postal Code")]
+        //[RegularExpression(@"^([a-zA-Z]\\d[a-zA-Z]\\s?\\d[a-zA-Z]\\d)$", ErrorMessage = "Please enter a valid Postal Code")]
         [StringLength(7, MinimumLength = 6, ErrorMessage = "Please enter a valid Postal Code")]
         public string CustPostal { get; set; }
 
