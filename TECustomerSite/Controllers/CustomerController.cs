@@ -9,9 +9,14 @@ namespace TECustomerSite.Controllers
     {
         // GET: CustomerController
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            if (HttpContext.Session.GetInt32("CurrentCustomer") > 0)
+            {
+                id = HttpContext.Session.GetInt32("CurrentCustomer") ?? 0;
+            }
+            Customer customer = CustomerManager.FindCustomer(id);
+            return View(customer);
         }
 
         // GET: CustomerController/Details/5
@@ -45,6 +50,10 @@ namespace TECustomerSite.Controllers
         [Authorize]
         public ActionResult Edit(int id)
         {
+            if (HttpContext.Session.GetInt32("CurrentCustomer") > 0)
+            {
+                id = HttpContext.Session.GetInt32("CurrentCustomer") ?? 0;
+            }
             Customer customer = CustomerManager.FindCustomer(id);
             return View(customer);
         }
