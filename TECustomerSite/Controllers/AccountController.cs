@@ -27,7 +27,10 @@ namespace TECustomerSite.Controllers
 				.FirstOrDefault();
 
 			if (usr == null)
+			{
+				TempData["LoginFailed"] = "Incorrect username or password";
 				return View();
+			}
 
             HttpContext.Session.SetInt32("CurrentCustomer", (int)usr.CustomerId);
 
