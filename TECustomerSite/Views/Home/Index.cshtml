@@ -2,30 +2,38 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Travel Experts!</h1>
+
+<img style="width: 100%; height: 40vh; position: absolute; top: 0px; left: 0px; z-index: -2; object-fit: cover;" src="~/css/Images/polynesia.jpg" />
+
+<div style="margin-top: 15vh; margin-bottom: 15vh;" class="text-center">
+    <h1 class="display-4 text-light" style="text-shadow: 2px 2px 4px #000000;">Welcome to Travel Experts!</h1>
+</div>
+
+<div style="display: flex; justify-content: center">
+	<a asp-controller="Account" asp-action="Register" class="btn btn-info m-4" role="button">Sign up</a>
+	<a asp-controller="Bookings" asp-action="Index" class="btn btn-danger m-4" role="button">Browse bookings</a>
 </div>
 
 <div class="row text-center">
       <div class="col-sm-4">
         <div class="thumbnail">
-          <img src="~/css/images/asia.jpg" alt="Paris" width="400" height="300">
+          <img src="~/css/images/asia.jpg" alt="Asia" width="90%" height="300" style="object-fit:cover;">
           <p><strong>Asian Expedition</strong></p>
           <p>Airfare, Hotel and Eco. Tour</p>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="thumbnail">
-          <img src="~/css/images/carribean.jpg" alt="New York" width="400" height="300">
+          <img src="~/css/images/carribean.jpg" alt="Caribbean" width="90%" height="300" style="object-fit:cover;">
           <p><strong>Carribean New Year</strong></p>
           <p>Cruise the Carribean and celebrate the New Year!</p>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="thumbnail">
-          <img src="~/css/images/italy.jpg" alt="San Francisco" width="400" height="300">
+          <img src="~/css/images/italy.jpg" alt="Europe" width="90%" height="300" style="object-fit:cover;">
           <p><strong>European Vacation</strong></p>
           <p>Euro tour with rail pass and travel insurance</p>
         </div>
       </div>
-    </div>
+</div>
