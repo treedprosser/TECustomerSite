@@ -14,6 +14,8 @@ namespace TECustomerSite.Controllers
 	/// </summary>
 	public class AccountController : Controller
 	{
+		//Arthur DeLino
+		//Loads the login page
 		public IActionResult Login( string? returnUrl = null)
 		{
 			if (returnUrl != null)
@@ -21,7 +23,8 @@ namespace TECustomerSite.Controllers
 			return View();
 		}
 
-
+		//Arthur DeLino
+		//Logs the user in or returns the login page with an error message
 		[HttpPost]
 		public async Task<IActionResult> LoginAsync( Customer customer )
 		{
@@ -55,11 +58,10 @@ namespace TECustomerSite.Controllers
 				return Redirect(TempData["ReturnUrl"].ToString());
 		}
 
+		//Arthur DeLino
+		//logs the user out
 		public async Task<IActionResult> LogoutAsync()
 		{
-            //int? custID = HttpContext.Session.GetInt32("CurrentCustomer");
-            //if (custID != null)
-            //    HttpContext.Session.Remove("CurrentCustomer");
 			await HttpContext.SignOutAsync("Cookies");
 			return RedirectToAction("Index", "Home");
 		}
