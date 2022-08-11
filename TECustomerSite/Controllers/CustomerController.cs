@@ -5,6 +5,11 @@ using TECustomerSite.Models;
 
 namespace TECustomerSite.Controllers
 {
+    /// <summary>
+    /// Customer controller for methods of the Customer Edit Page and Customer Profile Page 
+    /// Author: Brianna Gibson 
+    /// Date: August 2022
+    /// </summary>
     public class CustomerController : Controller
     {
         // GET: CustomerController

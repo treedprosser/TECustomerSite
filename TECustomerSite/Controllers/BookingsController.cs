@@ -4,6 +4,11 @@ using TECustomerSite.Models;
 
 namespace TECustomerSite.Controllers
 {
+    /// <summary>
+    /// Bookings controller
+    /// Hilmi Ah
+    /// Aug 2022
+    /// </summary>
     public class BookingsController : Controller
     {
         [Authorize]

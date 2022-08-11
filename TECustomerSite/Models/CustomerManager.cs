@@ -2,6 +2,10 @@
 
 namespace TECustomerSite.Models
 {
+    /// <summary>
+    /// Repository of methods for registering, finding and updating customer accounts
+    /// Authors: Trevor & Brianna
+    /// </summary>
     public class CustomerManager
     {
         // Register the customer after info has been filled in and verified
@@ -12,6 +16,7 @@ namespace TECustomerSite.Models
             db.SaveChanges();
         }
 
+        // Find all customers
         public static List<Customer> GetCustomers()
         {
             TravelExpertsContext db = new TravelExpertsContext();
