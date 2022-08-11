@@ -83,7 +83,7 @@
 }
     </tbody>
 </table>
-<div>
-    <strong>Total Owing: </strong> @Model.Sum(b => b.Total)
+<div class="float-end" style="margin-bottom: 75px">
+    <strong>Total Owing: </strong>$@Math.Round((decimal)Model.Sum(b => b.Total), 2)
 </div>
 
