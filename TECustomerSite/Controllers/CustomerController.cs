@@ -12,7 +12,7 @@ namespace TECustomerSite.Controllers
     /// </summary>
     public class CustomerController : Controller
     {
-        // GET: CustomerController
+        // GET: CustomerController using session of user logged in
         [Authorize]
         public ActionResult Index(int id)
         {
