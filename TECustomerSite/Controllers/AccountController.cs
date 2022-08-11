@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TECustomerSite.Controllers
 {
+	/// <summary>
+	/// Controller for logging in or registerting new customers
+	/// Authors: Arthur & Trevor
+	/// </summary>
 	public class AccountController : Controller
 	{
 		public IActionResult Login( string? returnUrl = null)
@@ -60,11 +64,13 @@ namespace TECustomerSite.Controllers
 			return RedirectToAction("Index", "Home");
 		}
 
+		// View the registration page
         public IActionResult Register()
         {
             return View(new Customer());
         }
 
+		// Once valid data has been entered, register the customer using the info provided
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Register(Customer customer)
