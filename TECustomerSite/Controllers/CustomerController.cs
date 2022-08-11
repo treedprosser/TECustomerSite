@@ -55,6 +55,7 @@ namespace TECustomerSite.Controllers
         [Authorize]
         public ActionResult Edit(int id)
         {
+            // finds the customer based on the user logged in 
             if (HttpContext.Session.GetInt32("CurrentCustomer") > 0)
             {
                 id = HttpContext.Session.GetInt32("CurrentCustomer") ?? 0;
